@@ -44,17 +44,27 @@ Core capabilities:
 
 High-level layers:
 
-1. **Compose UI**: journal, insights, Ask AI, stats, settings, trash, entry detail, create/edit flows
+1. **Compose UI**: journal, insights, Ask AI, voice dump, settings, entry detail, create/edit flows
 2. **ViewModel layer**: app state, business rules, AI orchestration, exports, voice workflows
 3. **Data layer**: repository, Room DAO/database, preferences manager
 4. **Integration layer**: LLM clients, voice recorder/player, PDF/CSV export, notification workers, security coordinator
 5. **Device services**: local storage, biometric prompt, WorkManager, Android notification system
 
-## Screenshot
+## Current screenshots
 
-Current recruiter-safe screenshot contains no private journal content or secrets.
+Fresh screenshots captured from the current app build. Personal profile values are redacted; no journal content, secrets, or API keys are shown.
 
-![Journal home empty state](assets/screenshots/journal-home-empty-state.png)
+| Journal | Insights |
+|---|---|
+| ![Journal dashboard](assets/screenshots/current/01-journal.png) | ![Insights dashboard](assets/screenshots/current/02-insights.png) |
+
+| Ask AI | Voice Dump |
+|---|---|
+| ![Ask AI Coach](assets/screenshots/current/03-ask-ai.png) | ![Voice Dump](assets/screenshots/current/04-dump.png) |
+
+| Settings | Entry capture |
+|---|---|
+| ![Settings screen](assets/screenshots/current/05-settings.png) | ![Entry capture screen](assets/screenshots/current/06-create-entry.png) |
 
 ## What this demonstrates
 
