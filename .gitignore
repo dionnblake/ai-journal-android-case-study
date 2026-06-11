@@ -1,0 +1,16 @@
+# OS/editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Keep public case-study repo source-free by default
+*.apk
+*.aab
+*.keystore
+*.jks
+local.properties
+.env
+.env.*
+
+# If a future sample app is added, explicitly review before committing source.

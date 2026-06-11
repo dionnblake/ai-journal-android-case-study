@@ -1,0 +1,56 @@
+<svg width="1200" height="760" viewBox="0 0 1200 760" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="760" rx="32" fill="#080808"/>
+  <text x="60" y="78" fill="#F5F5F5" font-family="Inter, Arial, sans-serif" font-size="38" font-weight="700">AI Journal Android Architecture</text>
+  <text x="60" y="118" fill="#B8B8B8" font-family="Inter, Arial, sans-serif" font-size="20">Public-safe system view. Private source code, prompts, and orchestration logic excluded.</text>
+
+  <defs>
+    <style>
+      .box { fill: #151515; stroke: #D8B436; stroke-width: 2; }
+      .muted { fill: #B8B8B8; font-family: Inter, Arial, sans-serif; font-size: 18px; }
+      .title { fill: #FFFFFF; font-family: Inter, Arial, sans-serif; font-size: 24px; font-weight: 700; }
+      .small { fill: #D8D8D8; font-family: Inter, Arial, sans-serif; font-size: 16px; }
+      .arrow { stroke: #D8B436; stroke-width: 3; marker-end: url(#arrowhead); }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#D8B436"/>
+    </marker>
+  </defs>
+
+  <rect class="box" x="60" y="170" width="300" height="150" rx="20"/>
+  <text class="title" x="90" y="215">Compose UI</text>
+  <text class="small" x="90" y="250">Journal, Insights, Ask AI</text>
+  <text class="small" x="90" y="276">Stats, Settings, Detail</text>
+  <text class="small" x="90" y="302">Create/Edit, Trash</text>
+
+  <rect class="box" x="450" y="170" width="300" height="150" rx="20"/>
+  <text class="title" x="480" y="215">ViewModel Layer</text>
+  <text class="small" x="480" y="250">State + business rules</text>
+  <text class="small" x="480" y="276">AI orchestration boundary</text>
+  <text class="small" x="480" y="302">Exports + voice workflows</text>
+
+  <rect class="box" x="840" y="170" width="300" height="150" rx="20"/>
+  <text class="title" x="870" y="215">Device Services</text>
+  <text class="small" x="870" y="250">Notifications</text>
+  <text class="small" x="870" y="276">Biometric/app lock</text>
+  <text class="small" x="870" y="302">Storage + files</text>
+
+  <rect class="box" x="255" y="430" width="300" height="165" rx="20"/>
+  <text class="title" x="285" y="475">Data Layer</text>
+  <text class="small" x="285" y="510">Repository</text>
+  <text class="small" x="285" y="536">Room DAO/database</text>
+  <text class="small" x="285" y="562">DataStore preferences</text>
+
+  <rect class="box" x="645" y="430" width="300" height="165" rx="20"/>
+  <text class="title" x="675" y="475">Integrations</text>
+  <text class="small" x="675" y="510">LLM API clients</text>
+  <text class="small" x="675" y="536">Voice recorder/player</text>
+  <text class="small" x="675" y="562">PDF/CSV export</text>
+
+  <line class="arrow" x1="360" y1="245" x2="450" y2="245"/>
+  <line class="arrow" x1="750" y1="245" x2="840" y2="245"/>
+  <line class="arrow" x1="560" y1="320" x2="455" y2="430"/>
+  <line class="arrow" x1="640" y1="320" x2="745" y2="430"/>
+  <line class="arrow" x1="555" y1="512" x2="645" y2="512"/>
+
+  <text class="muted" x="60" y="690">Boundary: public docs show system design only. Private repo contains implementation, prompts, and product logic.</text>
+</svg>
