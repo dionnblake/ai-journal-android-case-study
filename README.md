@@ -26,6 +26,7 @@ Core capabilities:
 - Reminder scheduling
 - App lock / biometric access flow
 - Backup and restore support
+- Supabase-backed journal mirror into a local Obsidian vault
 
 ## Tech stack
 
@@ -33,8 +34,9 @@ Core capabilities:
 - Jetpack Compose + Material 3
 - Room for local persistence
 - DataStore for settings and API key preferences
-- WorkManager for reminders and background cleanup
+- WorkManager for reminders, background cleanup, and cloud sync
 - Retrofit + Gson for LLM API integrations
+- Supabase REST + Postgres for private cloud journal sync
 - Android biometric APIs for app lock flow
 - PDF / CSV export utilities
 
@@ -47,8 +49,8 @@ High-level layers:
 1. **Compose UI**: journal, insights, Ask AI, voice dump, settings, entry detail, create/edit flows
 2. **ViewModel layer**: app state, business rules, AI orchestration, exports, voice workflows
 3. **Data layer**: repository, Room DAO/database, preferences manager
-4. **Integration layer**: LLM clients, voice recorder/player, PDF/CSV export, notification workers, security coordinator
-5. **Device services**: local storage, biometric prompt, WorkManager, Android notification system
+4. **Integration layer**: LLM clients, Supabase sync client, voice recorder/player, exports, notification workers, security coordinator
+5. **Device services**: local storage, biometric prompt, WorkManager, Android notification system, Windows Task Scheduler
 
 ## Current screenshots
 
@@ -80,6 +82,7 @@ Fresh screenshots captured from the current app build. Personal profile values a
 - **Settings via DataStore**: user preferences and API key state live in Android preferences rather than source-controlled config.
 - **Room-backed persistence**: journal entries use structured local storage for search, filtering, stats, backup, and restore paths.
 - **WorkManager scheduling**: reminders and cleanup jobs use platform-supported background scheduling.
+- **Supabase-to-Obsidian bridge**: phone changes upload through a protected Supabase table; the PC imports active rows into Obsidian markdown on a 15-minute schedule.
 - **Private AI implementation**: prompts, orchestration logic, and model-routing details remain private.
 
 ## Repository boundaries

@@ -4,7 +4,7 @@ This document describes the private Android app at a system-design level without
 
 ## System overview
 
-The app is a local-first Android journaling system with AI-assisted reflection. It combines a Compose UI, a ViewModel-centered state layer, Room persistence, DataStore preferences, background workers, export utilities, media utilities, and LLM API clients.
+The app is a local-first Android journaling system with AI-assisted reflection and an optional cloud mirror for Obsidian. It combines a Compose UI, a ViewModel-centered state layer, Room persistence, DataStore preferences, background workers, export utilities, media utilities, Supabase sync, and LLM API clients.
 
 ```text
 User
@@ -15,9 +15,13 @@ Navigation + screen state
   ↓
 Journal ViewModel
   ↓                         ↓
-Repository / Room / DAO     AI + media + export utilities
+Repository / Room / DAO     AI + media + sync utilities
   ↓                         ↓
-Local database + prefs      LLM APIs / Android services
+Local database + prefs      LLM APIs / Supabase / Android services
+                            ↓
+                       PC scheduled importer
+                            ↓
+                       Obsidian markdown vault
 ```
 
 ## UI layer
@@ -45,6 +49,7 @@ The ViewModel coordinates:
 - AI request orchestration
 - voice note handling
 - export actions
+- Supabase journal mirror triggers
 - backup and restore flows
 - UI state transitions
 
@@ -72,11 +77,26 @@ At a safe level, the architecture includes:
 
 ## Background jobs
 
-WorkManager supports durable Android background tasks, including reminders and cleanup flows. This is more reliable than manual timers because Android can manage scheduling across app restarts and device state changes.
+WorkManager supports durable Android background tasks, including reminders, cleanup flows, and Supabase cloud sync. This is more reliable than manual timers because Android can manage scheduling across app restarts and device state changes.
+
+## Obsidian mirror
+
+The private app mirrors journal entries to Obsidian without Syncthing. Android uploads journal rows to a Supabase table through a protected REST path. A Windows Scheduled Task on the PC pulls active rows every 15 minutes and rewrites markdown files inside the local Obsidian vault.
+
+```text
+Android save/edit/delete
+  -> WorkManager cloud sync
+  -> Supabase Postgres
+  -> Windows Scheduled Task
+  -> Obsidian markdown folder
+```
+
+This keeps the phone as the source of truth while making entries searchable and linkable in Obsidian.
 
 ## Security and privacy model
 
 - Journal entries are local-first.
+- Supabase sync uses publishable credentials plus a private sync header; service role keys are not shipped in the app.
 - API keys are not committed to source control.
 - User can configure keys inside app settings.
 - Biometric/app-lock flow protects local access.
